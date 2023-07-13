@@ -293,3 +293,5 @@ __pycache__/
 
 *.binlog
 Footer
+
+*.pdf

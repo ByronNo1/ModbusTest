@@ -33,26 +33,31 @@
             this.btnDisConnect = new System.Windows.Forms.Button();
             this.btnConnect = new System.Windows.Forms.Button();
             this.GrpBoxSetting = new System.Windows.Forms.GroupBox();
-            this.comBPortName = new System.Windows.Forms.ComboBox();
-            this.comBBaudrate = new System.Windows.Forms.ComboBox();
-            this.labPortName = new System.Windows.Forms.Label();
-            this.labBaudrate = new System.Windows.Forms.Label();
-            this.comBParity = new System.Windows.Forms.ComboBox();
-            this.labParity = new System.Windows.Forms.Label();
-            this.comBDataBits = new System.Windows.Forms.ComboBox();
-            this.labDataBits = new System.Windows.Forms.Label();
-            this.comBStopBits = new System.Windows.Forms.ComboBox();
             this.labStopBits = new System.Windows.Forms.Label();
+            this.labDataBits = new System.Windows.Forms.Label();
+            this.labParity = new System.Windows.Forms.Label();
+            this.labBaudrate = new System.Windows.Forms.Label();
+            this.labPortName = new System.Windows.Forms.Label();
+            this.comBStopBits = new System.Windows.Forms.ComboBox();
+            this.comBDataBits = new System.Windows.Forms.ComboBox();
+            this.comBParity = new System.Windows.Forms.ComboBox();
+            this.comBBaudrate = new System.Windows.Forms.ComboBox();
+            this.comBPortName = new System.Windows.Forms.ComboBox();
             this.btnSend = new System.Windows.Forms.Button();
             this.tabCrlSend = new System.Windows.Forms.TabControl();
             this.tabPString = new System.Windows.Forms.TabPage();
-            this.tabPByte = new System.Windows.Forms.TabPage();
             this.txtSendString = new System.Windows.Forms.TextBox();
+            this.tabPByte = new System.Windows.Forms.TabPage();
             this.txtSendByte = new System.Windows.Forms.TextBox();
+            this.GrpBoxModBus = new System.Windows.Forms.GroupBox();
+            this.btnModbusSend = new System.Windows.Forms.Button();
+            this.comBFunctionCode = new System.Windows.Forms.ComboBox();
+            this.labFunctionCode = new System.Windows.Forms.Label();
             this.GrpBoxSetting.SuspendLayout();
             this.tabCrlSend.SuspendLayout();
             this.tabPString.SuspendLayout();
             this.tabPByte.SuspendLayout();
+            this.GrpBoxModBus.SuspendLayout();
             this.SuspendLayout();
             // 
             // listSend
@@ -116,14 +121,91 @@
             this.GrpBoxSetting.TabStop = false;
             this.GrpBoxSetting.Text = "Port Setting";
             // 
-            // comBPortName
+            // labStopBits
             // 
-            this.comBPortName.Font = new System.Drawing.Font("新細明體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.comBPortName.FormattingEnabled = true;
-            this.comBPortName.Location = new System.Drawing.Point(102, 39);
-            this.comBPortName.Name = "comBPortName";
-            this.comBPortName.Size = new System.Drawing.Size(323, 36);
-            this.comBPortName.TabIndex = 3;
+            this.labStopBits.AutoSize = true;
+            this.labStopBits.Location = new System.Drawing.Point(6, 245);
+            this.labStopBits.Name = "labStopBits";
+            this.labStopBits.Size = new System.Drawing.Size(66, 18);
+            this.labStopBits.TabIndex = 5;
+            this.labStopBits.Text = "StopBits";
+            // 
+            // labDataBits
+            // 
+            this.labDataBits.AutoSize = true;
+            this.labDataBits.Location = new System.Drawing.Point(6, 196);
+            this.labDataBits.Name = "labDataBits";
+            this.labDataBits.Size = new System.Drawing.Size(69, 18);
+            this.labDataBits.TabIndex = 5;
+            this.labDataBits.Text = "DataBits";
+            // 
+            // labParity
+            // 
+            this.labParity.AutoSize = true;
+            this.labParity.Location = new System.Drawing.Point(6, 149);
+            this.labParity.Name = "labParity";
+            this.labParity.Size = new System.Drawing.Size(49, 18);
+            this.labParity.TabIndex = 5;
+            this.labParity.Text = "Parity";
+            // 
+            // labBaudrate
+            // 
+            this.labBaudrate.AutoSize = true;
+            this.labBaudrate.Location = new System.Drawing.Point(6, 104);
+            this.labBaudrate.Name = "labBaudrate";
+            this.labBaudrate.Size = new System.Drawing.Size(70, 18);
+            this.labBaudrate.TabIndex = 5;
+            this.labBaudrate.Text = "Baudrate";
+            // 
+            // labPortName
+            // 
+            this.labPortName.AutoSize = true;
+            this.labPortName.Location = new System.Drawing.Point(6, 50);
+            this.labPortName.Name = "labPortName";
+            this.labPortName.Size = new System.Drawing.Size(77, 18);
+            this.labPortName.TabIndex = 5;
+            this.labPortName.Text = "PortName";
+            // 
+            // comBStopBits
+            // 
+            this.comBStopBits.FormattingEnabled = true;
+            this.comBStopBits.Items.AddRange(new object[] {
+            " None",
+            "One",
+            "Two",
+            "OnePointFive"});
+            this.comBStopBits.Location = new System.Drawing.Point(102, 245);
+            this.comBStopBits.Name = "comBStopBits";
+            this.comBStopBits.Size = new System.Drawing.Size(323, 26);
+            this.comBStopBits.TabIndex = 4;
+            this.comBStopBits.Text = "None";
+            // 
+            // comBDataBits
+            // 
+            this.comBDataBits.FormattingEnabled = true;
+            this.comBDataBits.Items.AddRange(new object[] {
+            "7",
+            "8"});
+            this.comBDataBits.Location = new System.Drawing.Point(102, 196);
+            this.comBDataBits.Name = "comBDataBits";
+            this.comBDataBits.Size = new System.Drawing.Size(323, 26);
+            this.comBDataBits.TabIndex = 4;
+            this.comBDataBits.Text = "8";
+            // 
+            // comBParity
+            // 
+            this.comBParity.FormattingEnabled = true;
+            this.comBParity.Items.AddRange(new object[] {
+            "None",
+            "Odd",
+            "Even",
+            "Mark",
+            "Space"});
+            this.comBParity.Location = new System.Drawing.Point(102, 149);
+            this.comBParity.Name = "comBParity";
+            this.comBParity.Size = new System.Drawing.Size(323, 26);
+            this.comBParity.TabIndex = 4;
+            this.comBParity.Text = "None";
             // 
             // comBBaudrate
             // 
@@ -143,91 +225,14 @@
             this.comBBaudrate.TabIndex = 4;
             this.comBBaudrate.Text = "115200";
             // 
-            // labPortName
+            // comBPortName
             // 
-            this.labPortName.AutoSize = true;
-            this.labPortName.Location = new System.Drawing.Point(6, 50);
-            this.labPortName.Name = "labPortName";
-            this.labPortName.Size = new System.Drawing.Size(77, 18);
-            this.labPortName.TabIndex = 5;
-            this.labPortName.Text = "PortName";
-            // 
-            // labBaudrate
-            // 
-            this.labBaudrate.AutoSize = true;
-            this.labBaudrate.Location = new System.Drawing.Point(6, 104);
-            this.labBaudrate.Name = "labBaudrate";
-            this.labBaudrate.Size = new System.Drawing.Size(70, 18);
-            this.labBaudrate.TabIndex = 5;
-            this.labBaudrate.Text = "Baudrate";
-            // 
-            // comBParity
-            // 
-            this.comBParity.FormattingEnabled = true;
-            this.comBParity.Items.AddRange(new object[] {
-            "None",
-            "Odd",
-            "Even",
-            "Mark",
-            "Space"});
-            this.comBParity.Location = new System.Drawing.Point(102, 149);
-            this.comBParity.Name = "comBParity";
-            this.comBParity.Size = new System.Drawing.Size(323, 26);
-            this.comBParity.TabIndex = 4;
-            this.comBParity.Text = "None";
-            // 
-            // labParity
-            // 
-            this.labParity.AutoSize = true;
-            this.labParity.Location = new System.Drawing.Point(6, 149);
-            this.labParity.Name = "labParity";
-            this.labParity.Size = new System.Drawing.Size(49, 18);
-            this.labParity.TabIndex = 5;
-            this.labParity.Text = "Parity";
-            // 
-            // comBDataBits
-            // 
-            this.comBDataBits.FormattingEnabled = true;
-            this.comBDataBits.Items.AddRange(new object[] {
-            "7",
-            "8"});
-            this.comBDataBits.Location = new System.Drawing.Point(102, 196);
-            this.comBDataBits.Name = "comBDataBits";
-            this.comBDataBits.Size = new System.Drawing.Size(323, 26);
-            this.comBDataBits.TabIndex = 4;
-            this.comBDataBits.Text = "8";
-            // 
-            // labDataBits
-            // 
-            this.labDataBits.AutoSize = true;
-            this.labDataBits.Location = new System.Drawing.Point(6, 196);
-            this.labDataBits.Name = "labDataBits";
-            this.labDataBits.Size = new System.Drawing.Size(69, 18);
-            this.labDataBits.TabIndex = 5;
-            this.labDataBits.Text = "DataBits";
-            // 
-            // comBStopBits
-            // 
-            this.comBStopBits.FormattingEnabled = true;
-            this.comBStopBits.Items.AddRange(new object[] {
-            " None",
-            "One",
-            "Two",
-            "OnePointFive"});
-            this.comBStopBits.Location = new System.Drawing.Point(102, 245);
-            this.comBStopBits.Name = "comBStopBits";
-            this.comBStopBits.Size = new System.Drawing.Size(323, 26);
-            this.comBStopBits.TabIndex = 4;
-            this.comBStopBits.Text = "None";
-            // 
-            // labStopBits
-            // 
-            this.labStopBits.AutoSize = true;
-            this.labStopBits.Location = new System.Drawing.Point(6, 245);
-            this.labStopBits.Name = "labStopBits";
-            this.labStopBits.Size = new System.Drawing.Size(66, 18);
-            this.labStopBits.TabIndex = 5;
-            this.labStopBits.Text = "StopBits";
+            this.comBPortName.Font = new System.Drawing.Font("新細明體", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.comBPortName.FormattingEnabled = true;
+            this.comBPortName.Location = new System.Drawing.Point(102, 39);
+            this.comBPortName.Name = "comBPortName";
+            this.comBPortName.Size = new System.Drawing.Size(323, 36);
+            this.comBPortName.TabIndex = 3;
             // 
             // btnSend
             // 
@@ -237,6 +242,7 @@
             this.btnSend.TabIndex = 6;
             this.btnSend.Text = "Send";
             this.btnSend.UseVisualStyleBackColor = true;
+            this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
             // 
             // tabCrlSend
             // 
@@ -259,6 +265,14 @@
             this.tabPString.Text = "String";
             this.tabPString.UseVisualStyleBackColor = true;
             // 
+            // txtSendString
+            // 
+            this.txtSendString.Location = new System.Drawing.Point(0, 3);
+            this.txtSendString.Multiline = true;
+            this.txtSendString.Name = "txtSendString";
+            this.txtSendString.Size = new System.Drawing.Size(459, 199);
+            this.txtSendString.TabIndex = 8;
+            // 
             // tabPByte
             // 
             this.tabPByte.Controls.Add(this.txtSendByte);
@@ -270,14 +284,6 @@
             this.tabPByte.Text = "Byte";
             this.tabPByte.UseVisualStyleBackColor = true;
             // 
-            // txtSendString
-            // 
-            this.txtSendString.Location = new System.Drawing.Point(0, 3);
-            this.txtSendString.Multiline = true;
-            this.txtSendString.Name = "txtSendString";
-            this.txtSendString.Size = new System.Drawing.Size(459, 199);
-            this.txtSendString.TabIndex = 8;
-            // 
             // txtSendByte
             // 
             this.txtSendByte.Location = new System.Drawing.Point(8, 3);
@@ -286,11 +292,59 @@
             this.txtSendByte.Size = new System.Drawing.Size(459, 199);
             this.txtSendByte.TabIndex = 9;
             // 
+            // GrpBoxModBus
+            // 
+            this.GrpBoxModBus.Controls.Add(this.labFunctionCode);
+            this.GrpBoxModBus.Controls.Add(this.comBFunctionCode);
+            this.GrpBoxModBus.Controls.Add(this.btnModbusSend);
+            this.GrpBoxModBus.Location = new System.Drawing.Point(1277, 25);
+            this.GrpBoxModBus.Name = "GrpBoxModBus";
+            this.GrpBoxModBus.Size = new System.Drawing.Size(596, 701);
+            this.GrpBoxModBus.TabIndex = 9;
+            this.GrpBoxModBus.TabStop = false;
+            this.GrpBoxModBus.Text = "groupBox1";
+            // 
+            // btnModbusSend
+            // 
+            this.btnModbusSend.Location = new System.Drawing.Point(61, 610);
+            this.btnModbusSend.Name = "btnModbusSend";
+            this.btnModbusSend.Size = new System.Drawing.Size(472, 85);
+            this.btnModbusSend.TabIndex = 7;
+            this.btnModbusSend.Text = "Send";
+            this.btnModbusSend.UseVisualStyleBackColor = true;
+            // 
+            // comBFunctionCode
+            // 
+            this.comBFunctionCode.Font = new System.Drawing.Font("新細明體", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.comBFunctionCode.FormattingEnabled = true;
+            this.comBFunctionCode.Items.AddRange(new object[] {
+            "01-Read Coil Status",
+            "02-Read Input Status",
+            "03-Read Holding Registers ",
+            "04-Read Input Registers",
+            "05-Force Single Coil",
+            "06-Preset Single Register ",
+            "16-Preset Multiple Regs "});
+            this.comBFunctionCode.Location = new System.Drawing.Point(61, 64);
+            this.comBFunctionCode.Name = "comBFunctionCode";
+            this.comBFunctionCode.Size = new System.Drawing.Size(472, 40);
+            this.comBFunctionCode.TabIndex = 10;
+            // 
+            // labFunctionCode
+            // 
+            this.labFunctionCode.AutoSize = true;
+            this.labFunctionCode.Location = new System.Drawing.Point(58, 37);
+            this.labFunctionCode.Name = "labFunctionCode";
+            this.labFunctionCode.Size = new System.Drawing.Size(107, 18);
+            this.labFunctionCode.TabIndex = 11;
+            this.labFunctionCode.Text = "Function Code";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 755);
+            this.ClientSize = new System.Drawing.Size(2267, 755);
+            this.Controls.Add(this.GrpBoxModBus);
             this.Controls.Add(this.tabCrlSend);
             this.Controls.Add(this.btnSend);
             this.Controls.Add(this.GrpBoxSetting);
@@ -308,6 +362,8 @@
             this.tabPString.PerformLayout();
             this.tabPByte.ResumeLayout(false);
             this.tabPByte.PerformLayout();
+            this.GrpBoxModBus.ResumeLayout(false);
+            this.GrpBoxModBus.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -335,6 +391,10 @@
         private System.Windows.Forms.TextBox txtSendString;
         private System.Windows.Forms.TabPage tabPByte;
         private System.Windows.Forms.TextBox txtSendByte;
+        private System.Windows.Forms.GroupBox GrpBoxModBus;
+        private System.Windows.Forms.Button btnModbusSend;
+        private System.Windows.Forms.Label labFunctionCode;
+        private System.Windows.Forms.ComboBox comBFunctionCode;
     }
 }
 

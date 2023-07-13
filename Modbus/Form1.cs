@@ -6,10 +6,12 @@ using System.Drawing;
 using System.IO;
 using System.IO.Ports;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace Modbus
 {
@@ -134,6 +136,67 @@ namespace Modbus
                 gSerialPort.Dispose();//釋放
                 gSerialPort = null;//完全消失
             }
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            byte[] _bytes;
+            if (txtSendString.Visible)
+            {
+
+                if (txtSendString.Text != "")
+                {                
+                    //ASCIIEncoding ascii = new ASCIIEncoding();
+                    //int byteCount = ascii.GetByteCount(txtSendString.Text.ToCharArray(), 0, txtSendString.Text.Length);
+                    //_bytes = new Byte[byteCount];
+                    //int bytesEncodedCount = ascii.GetBytes(txtSendString.Text.ToCharArray(), 0, txtSendString.Text.Length, _bytes, 0);
+                    _bytes = System.Text.Encoding.ASCII.GetBytes(txtSendString.Text);
+                }
+               
+            }
+            else
+            {
+                if (txtSendByte.Text != "")
+                {
+                    _bytes = MyConvert.GetBytes(txtSendByte.Text);
+                }
+            }
+
+
+        }
+
+        private void RS232Send(byte[] _bytes)
+        {
+            void listSendadd()
+            {
+                if (listSend.Items.Count > 100)
+                {
+                    listSend.Items.Clear();
+                }
+                listSend.Items.Add(MyConvert.ToHexString(_bytes));
+            }
+
+            if (gSerialPort != null && gSerialPort.IsOpen)//
+            {
+                gSerialPort.Write(_bytes, 0, _bytes.GetUpperBound(0));//傳送出資料
+                if (listSend.InvokeRequired)
+                {
+                    listSend.Invoke(new EventHandler(delegate
+                    {
+                        listSendadd();
+                    }));
+                }
+                else
+                {
+                    listSendadd();
+                }
+                  
+
+            }
+        }
+        private void RS232Send(string _Str)
+        {
+
         }
 
 
