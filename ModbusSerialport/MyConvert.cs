@@ -80,6 +80,8 @@ namespace Modbus
 
 
         //---------------------------TCPIP--------------------------------
+        //https://ozeki.hu/p_5882-mobdbus-function-code-15-write-multiple-coils.html
+
         public static string ToHexString(byte[] bytes) // 0xae00cf => "AE00CF "
         {
             string hexString = string.Empty;
@@ -132,7 +134,7 @@ namespace Modbus
                     j = j + 2;
                 }
                 return bytes;
-                /*----------------以下是加入CRC後戳檢查碼----------------*/
+                /*----------------以下是加入CRC檢查碼----------------*/
                 //byte[] bytes_temp = new byte[2];
                 //bytes_temp = get_CRC16_C(bytes);
                 //bytes_2[bytes.Length] = bytes_temp[0];
